@@ -3,6 +3,7 @@ import {FilterState} from '../type/filterType';
 const initState: FilterState = {
   id: '',
   name: '',
+  token: '',
 };
 const filterSlice = createSlice({
   name: 'filter',
@@ -10,6 +11,7 @@ const filterSlice = createSlice({
   reducers: {
     searchFilterChange: (state, action: PayloadAction<FilterState>) => {
       state.id = action.payload.id;
+      state.name = action.payload.name;
       state.name = action.payload.name;
     },
   },
