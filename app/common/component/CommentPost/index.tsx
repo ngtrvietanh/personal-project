@@ -1,6 +1,6 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {HEIGHT, WIDTH} from '../../function';
+import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../function';
 import Avatar from '../Avatar';
 import R from '../../../assets/R';
 import ButtonIcon from './ButtonIcon';
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FAFB',
     flex: 1,
     marginRight: WIDTH(4),
+    fontWeight: '500',
+    fontSize: getFontSize(14),
+    lineHeight: getLineHeight(20),
   },
   container: {
     borderColor: '#F3F4F6',

@@ -11,15 +11,13 @@ const TabbarGroup = (props: Props) => {
   const {navigationState, onIndexChange} = props;
 
   return (
-    <>
-      <View style={styles.container}>
-        <Tabbar
-          data={navigationState.routes}
-          onChangeIndex={onIndexChange}
-          curIndex={navigationState.index}
-        />
-      </View>
-    </>
+    <View style={styles.container}>
+      <Tabbar
+        data={navigationState.routes}
+        onChangeIndex={onIndexChange}
+        curIndex={navigationState.index}
+      />
+    </View>
   );
 };
 

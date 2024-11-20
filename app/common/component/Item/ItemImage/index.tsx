@@ -6,15 +6,15 @@ import ViewBox from '../ViewBox';
 import {ItemPostProps} from '../../../../feature/TrangChu/type';
 interface Props {
   index: number;
-  item: ItemPostProps;
+  data: ItemPostProps;
 }
 const ItemImage = (props: Props) => {
-  const {index, item} = props;
+  const {index, data} = props;
   return (
     <ViewBox index={index}>
       <Image
         style={styles.image}
-        source={{uri: item?.image}}
+        source={{uri: data?.image}}
         resizeMode={'cover'}
       />
     </ViewBox>

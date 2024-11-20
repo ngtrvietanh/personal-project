@@ -4,8 +4,6 @@ import HeaderReal from '../../common/component/Header';
 import TabbarGroup from '../../common/component/Tabview';
 import ThaoLuan from './ThaoLuan';
 import ImageTab from './ImageTab';
-import VideoTab from './VideoTab';
-import AlbumTab from './AlbumTab';
 import {getWidth, HEIGHT} from '../../common/function';
 import UpdateThought from './UpdateThought';
 import InfoGroup from './InfoGroup';
@@ -79,11 +77,10 @@ const RenderScene = ({
     case 0:
       return <ThaoLuan dsBaiDang={dsBaiDang} />;
     case 1:
-      return <ImageTab dsBaiDang={dsBaiDang} />;
     case 2:
-      return <VideoTab dsBaiDang={dsBaiDang} />;
     case 3:
-      return <AlbumTab dsBaiDang={dsBaiDang} />;
+      return <ImageTab dsBaiDang={dsBaiDang} tab={index} />;
+
     case 4:
       return null;
 
