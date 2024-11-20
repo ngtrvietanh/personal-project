@@ -6,6 +6,7 @@ import {APP_SCREEN} from '../../navigation/screen-types';
 import {useDispatch} from 'react-redux';
 import {searchFilterChange} from '../../redux/slice/filterSlice';
 import HeaderReal from '../../common/component/Header';
+import BaseButton from '../../common/component/Button/BaseButton';
 
 const TrangChu = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const TrangChu = () => {
       <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
         <Button title="Deploy dữ liệu" onPress={handleSubmit} />
         <Button title="Go to Home" onPress={handleClick} />
+        <BaseButton title="Gõ vào đây" />
       </View>
     </View>
   );
