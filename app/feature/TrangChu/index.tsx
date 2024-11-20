@@ -1,10 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import HeaderReal from '../../common/component/Header';
 import TabbarGroup from '../../common/component/Tabview';
@@ -17,11 +11,13 @@ import UpdateThought from './UpdateThought';
 import InfoGroup from './InfoGroup';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {onGetDanhSach} from '../../networking/user';
+import {ItemPostProps} from './type';
 interface RouteProps {
   key: number;
   title: string;
 }
 const TrangChu = () => {
+  const [dsBaiDang, setdsBaiDang] = useState<ItemPostProps[]>([]);
   useEffect(() => {
     initData();
   }, []);
@@ -30,7 +26,7 @@ const TrangChu = () => {
     try {
       const params = {page: 1, limit: 10};
       const response = await onGetDanhSach(params);
-      console.log('====>', response?.data?.results);
+      setdsBaiDang(response?.data?.results || []);
     } catch (error) {}
   };
   const [index, setIndex] = useState(0);
@@ -46,42 +42,47 @@ const TrangChu = () => {
     setIndex(curindex);
   };
 
-  const renderScene = ({route}: {route: RouteProps}) => {
-    switch (route.title) {
-      case 'Thảo luận':
-        return <ThaoLuan key={route?.key} />;
-      case 'Ảnh':
-        return <ImageTab />;
-      case 'Video':
-        return <VideoTab />;
-      case 'Album':
-        return <AlbumTab />;
-      case 'File':
-        return <Text>1</Text>;
-
-      default:
-        return null;
-    }
-  };
   return (
     <View style={styles.container}>
       <HeaderReal />
-      <KeyboardAwareScrollView style={styles.content}>
+      <KeyboardAwareScrollView stickyHeaderIndices={[3]} style={styles.content}>
         <TouchableOpacity style={styles.coverPhoto} />
         <InfoGroup />
         <UpdateThought />
         <TabbarGroup
-          renderScene={renderScene}
           onIndexChange={onIndexChange}
           navigationState={{index, routes}}
         />
+        <RenderScene index={index} dsBaiDang={dsBaiDang} />
       </KeyboardAwareScrollView>
     </View>
   );
 };
 
 export default TrangChu;
+const RenderScene = ({
+  index,
+  dsBaiDang,
+}: {
+  index: number;
+  dsBaiDang: ItemPostProps[];
+}) => {
+  switch (index) {
+    case 0:
+      return <ThaoLuan dsBaiDang={dsBaiDang} />;
+    case 1:
+      return <ImageTab />;
+    case 2:
+      return <VideoTab />;
+    case 3:
+      return <AlbumTab />;
+    case 4:
+      return <Text>1</Text>;
 
+    default:
+      return null;
+  }
+};
 const styles = StyleSheet.create({
   container: {flex: 1},
   content: {flex: 1},

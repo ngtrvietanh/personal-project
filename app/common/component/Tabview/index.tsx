@@ -1,18 +1,14 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
 
-import {SceneRendererProps, TabView} from 'react-native-tab-view';
-
 import styles from './styles';
 import ButtonTabview from '../Button/ButtonTabview';
 interface Props {
   navigationState: any;
   onIndexChange: (e: number) => void;
-  renderScene: (props: SceneRendererProps & {route: any}) => React.ReactNode;
-  lazy?: boolean;
 }
 const TabbarGroup = (props: Props) => {
-  const {navigationState, onIndexChange, renderScene, lazy = true} = props;
+  const {navigationState, onIndexChange} = props;
 
   return (
     <>
@@ -23,13 +19,6 @@ const TabbarGroup = (props: Props) => {
           curIndex={navigationState.index}
         />
       </View>
-      <TabView
-        navigationState={navigationState}
-        onIndexChange={onIndexChange}
-        renderScene={renderScene}
-        renderTabBar={() => null}
-        lazy={lazy}
-      />
     </>
   );
 };

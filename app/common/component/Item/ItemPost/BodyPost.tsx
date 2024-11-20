@@ -1,8 +1,12 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {getFontSize, getLineHeight, HEIGHT} from '../../../function';
-import R from '../../../../assets/R';
-const BodyPost = () => {
+import {ItemPostProps} from '../../../../feature/TrangChu/type';
+interface Props {
+  item: ItemPostProps;
+}
+const BodyPost = (props: Props) => {
+  const {item} = props;
   return (
     <View>
       <Text style={styles.status}>
@@ -11,7 +15,7 @@ const BodyPost = () => {
       </Text>
       <Image
         style={styles.image}
-        source={R.images.avatar}
+        source={{uri: item?.image}}
         resizeMode={'cover'}
       />
     </View>

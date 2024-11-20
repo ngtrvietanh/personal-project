@@ -4,19 +4,24 @@ import Avatar from '../../Avatar';
 import R from '../../../../assets/R';
 import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
 import ItemIconSVG from '../../IconSVG';
-const HeaderPost = () => {
+import {ItemPostProps} from '../../../../feature/TrangChu/type';
+interface Props {
+  item: ItemPostProps;
+}
+const HeaderPost = (props: Props) => {
+  const {item} = props;
   return (
     <View style={styles.container}>
       <View style={styles.user}>
-        <Avatar source={R.images.avatar} size={HEIGHT(40)} />
+        <Avatar source={{uri: item?.image}} size={HEIGHT(40)} />
         <View style={styles.infoUser}>
           <View style={styles.nameBox}>
             <Text numberOfLines={1} style={styles.name}>
-              Sơn Tùng MTP
+              {item?.name}
             </Text>
             <ItemIconSVG title="Verify" />
           </View>
-          <Text style={styles.time}>@hoanghai • 2 giờ</Text>
+          <Text style={styles.time}>{'@hoanghai • 2 giờ'}</Text>
         </View>
       </View>
       <TouchableOpacity style={styles.btnMore}>

@@ -1,20 +1,21 @@
-/* eslint-disable react-native/no-inline-styles */
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 import ItemPost from '../../../common/component/Item/ItemPost';
-const DATA = [1, 2, 3];
-const ThaoLuan = () => {
+import {ItemPostProps} from '../type';
+interface Props {
+  dsBaiDang: ItemPostProps[];
+}
+const ThaoLuan = (props: Props) => {
+  const {dsBaiDang} = props;
   return (
-    <View style={{flex: 1}}>
-      {DATA?.map(item => {
-        return <ItemPost />;
-      })}
-      {/* <FlatList
-        data={DATA}
-        extraData={DATA}
+    <View style={styles.container}>
+      <FlatList
+        data={dsBaiDang}
+        extraData={dsBaiDang}
+        nestedScrollEnabled
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => `${index}`}
-        renderItem={({item, index}) => <ItemPost />}
+        keyExtractor={item => `${item?.id}`}
+        renderItem={({item, index}) => <ItemPost key={index} item={item} />}
         //   onRefresh={getData}
         //   refreshing={loading}
         //   contentContainerStyle={styles.viewContent}
@@ -23,11 +24,13 @@ const ThaoLuan = () => {
         //   onMomentumScrollBegin={() => {
         //     beginScroll.current = true;
         //   }}
-      /> */}
+      />
     </View>
   );
 };
 
 export default ThaoLuan;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {flex: 1},
+});

@@ -7,19 +7,23 @@ import FooterPost from './FooterPost';
 import CommentPost from '../../CommentPost';
 import {navigateScreen} from '../../../../navigation/navigation-service';
 import {APP_SCREEN} from '../../../../navigation/screen-types';
-
-const ItemPost = () => {
+import {ItemPostProps} from '../../../../feature/TrangChu/type';
+interface Props {
+  item: ItemPostProps;
+}
+const ItemPost = (props: Props) => {
+  const {item} = props;
   const onNavigate = () => {
-    navigateScreen(APP_SCREEN.DETAIL_POST);
+    navigateScreen(APP_SCREEN.DETAIL_POST, {item});
   };
   return (
     <TouchableOpacity
       onPress={onNavigate}
       activeOpacity={0.8}
       style={styles.container}>
-      <HeaderPost />
+      <HeaderPost item={item} />
       <View style={styles.gap} />
-      <BodyPost />
+      <BodyPost item={item} />
       <FooterPost />
       <CommentPost />
     </TouchableOpacity>

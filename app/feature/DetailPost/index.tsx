@@ -6,14 +6,18 @@ import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../common/function';
 import ItemIconQuantity from '../../common/component/Item/ItemPost/ItemIconQuantity';
 import CommentPost from '../../common/component/CommentPost';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
-const DetailPost = () => {
+import {ItemPostProps} from '../TrangChu/type';
+interface Props {
+  route: {params: {item: ItemPostProps}};
+}
+const DetailPost = (props: Props) => {
+  const data = props?.route?.params?.item;
   return (
     <View style={styles.container}>
-      <HeaderBaiDang />
+      <HeaderBaiDang item={data} />
       <KeyboardAwareScrollView>
         <View style={styles.content}>
-          <BodyPost />
+          <BodyPost item={data} />
           <Text style={styles.viewQuantity}>55K lượt xem</Text>
           <Text style={styles.viewQuantity}>
             11k thích • 6 bình luận • 2 chia sẻ
