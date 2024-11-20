@@ -10,15 +10,19 @@ import {
 } from 'react-native';
 // config
 import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../function';
+import ItemIconSVG from '../IconSVG';
 type Props = {
   title?: string;
-  children?: React.ReactElement;
   onPress?: (firstItem?: any, secondItem?: any) => void;
   customStyleBtn?: StyleProp<ViewStyle>;
   customStyleTitle?: StyleProp<TextStyle>;
   disabled?: boolean;
   isInvisible?: boolean;
   customStyle?: StyleProp<ViewStyle>;
+  iconNameLeft?: string;
+  iconNameRight?: string;
+  iconColorLeft?: string;
+  iconColoright?: string;
 };
 
 const BaseButton: FunctionComponent<Props> = (props: Props) => {
@@ -30,9 +34,19 @@ const BaseButton: FunctionComponent<Props> = (props: Props) => {
     customStyleTitle,
     disabled,
     customStyle,
-    children,
+    iconNameLeft,
+    iconNameRight,
+    iconColorLeft,
+    iconColoright,
   } = props;
   const backgroundColor = disabled ? '#F3F4F6' : '#FFFFFF';
+  const marginLeft = iconNameLeft ? WIDTH(8) : 0;
+  const marginRight = iconNameRight ? WIDTH(8) : 0;
+  const styleContainer = [
+    styles.container,
+    {backgroundColor, marginLeft, marginRight},
+    customStyleBtn,
+  ];
   if (isInvisible) {
     return null;
   } else {
@@ -42,13 +56,16 @@ const BaseButton: FunctionComponent<Props> = (props: Props) => {
           disabled={disabled}
           activeOpacity={0.6}
           onPress={onPress && onPress}
-          style={[styles.container, {backgroundColor}, customStyleBtn]}>
-          <>
-            {title && (
-              <Text style={[styles.title, customStyleTitle]}>{title}</Text>
-            )}
-            {!!children && children}
-          </>
+          style={styleContainer}>
+          {!!iconNameLeft && (
+            <ItemIconSVG title={iconNameLeft} color={iconColorLeft} />
+          )}
+          <Text style={[styles.title, customStyleTitle]}>
+            {title || 'Nút nhấn'}
+          </Text>
+          {!!iconNameRight && (
+            <ItemIconSVG title={iconNameRight} color={iconColoright} />
+          )}
         </TouchableOpacity>
       </View>
     );
@@ -59,6 +76,7 @@ export default BaseButton;
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: 'black',

@@ -6,6 +6,7 @@ import {goBack} from '../../../navigation/navigation-service';
 import Icon from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
+import ItemIconSVG from '../IconSVG';
 interface Props {
   onButton?: () => void;
 }
@@ -16,13 +17,13 @@ const HeaderReal = (props: Props) => {
     <View style={styles.container}>
       <View style={[styles.viewContent]}>
         <TouchableOpacity style={styles.btnBack} onPress={goBack}>
-          <Icon size={WIDTH(28)} name="chevron-left" color={'black'} />
+          <ItemIconSVG title="Chevron left" />
         </TouchableOpacity>
         <Text numberOfLines={2} style={[styles.title]}>
           {'UI/UX Graphic\nDesigners in VietNam'}
         </Text>
         <TouchableOpacity style={styles.btnRight} onPress={onButton}>
-          <Icon size={WIDTH(28)} name="chevron-left" color={'black'} />
+          <ItemIconSVG title="Search" />
         </TouchableOpacity>
       </View>
     </View>
