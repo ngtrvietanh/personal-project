@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ItemIconSVG from '../IconSVG';
-import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../function';
+import ItemIconSVG from '../../IconSVG';
+import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
 interface ItemIconQuantityProps {
   iconName: string;
   quantity: string;

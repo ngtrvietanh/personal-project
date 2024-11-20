@@ -37,9 +37,9 @@ const deviceHeight = height - (initialWindowMetrics?.insets.top ?? 0);
 
 export const responsiveHeight = (h: number): number => height * (h / 100);
 
-export const WIDTH = (w: number): number => width * (w / 375);
+export const WIDTH = (w: number): number => width * (w / 430);
 
-export const HEIGHT = (h: number): number => deviceHeight * (h / 812);
+export const HEIGHT = (h: number): number => deviceHeight * (h / 860);
 
 export const getWidth = (): number => width;
 

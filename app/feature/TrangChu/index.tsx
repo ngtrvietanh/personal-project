@@ -1,15 +1,27 @@
-import {View, StyleSheet, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import React, {useState} from 'react';
 import HeaderReal from '../../common/component/Header';
 import TabbarGroup from '../../common/component/Tabview';
 import ThaoLuan from './ThaoLuan';
+import ImageTab from './ImageTab';
+import VideoTab from './VideoTab';
+import AlbumTab from './AlbumTab';
+import {getWidth, HEIGHT} from '../../common/function';
+import UpdateThought from './UpdateThought';
+import InfoGroup from './InfoGroup';
 interface RouteProps {
   key: number;
   title: string;
 }
 const TrangChu = () => {
   const [index, setIndex] = useState(0);
-
+  console.log('===>', index);
   const [routes] = useState<RouteProps[]>([
     {key: 0, title: 'Thảo luận'},
     {key: 1, title: 'Ảnh'},
@@ -23,16 +35,15 @@ const TrangChu = () => {
   };
 
   const renderScene = ({route}: {route: RouteProps}) => {
-    console.log('===>', route);
     switch (route.title) {
       case 'Thảo luận':
         return <ThaoLuan key={route?.key} />;
       case 'Ảnh':
-        return <Text>1</Text>;
+        return <ImageTab />;
       case 'Video':
-        return <Text>1</Text>;
+        return <VideoTab />;
       case 'Album':
-        return <Text>1</Text>;
+        return <AlbumTab />;
       case 'File':
         return <Text>1</Text>;
 
@@ -40,11 +51,13 @@ const TrangChu = () => {
         return null;
     }
   };
-
   return (
     <View style={styles.container}>
       <HeaderReal />
       <View style={styles.content}>
+        <TouchableOpacity style={styles.coverPhoto} />
+        <InfoGroup />
+        <UpdateThought />
         <TabbarGroup
           renderScene={renderScene}
           onIndexChange={onIndexChange}
@@ -60,4 +73,5 @@ export default TrangChu;
 const styles = StyleSheet.create({
   container: {flex: 1},
   content: {flex: 1},
+  coverPhoto: {height: HEIGHT(190), width: getWidth()},
 });

@@ -1,8 +1,8 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import Avatar from '../Avatar';
-import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../function';
-import R from '../../../assets/R';
+import Avatar from '../../Avatar';
+import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
+import R from '../../../../assets/R';
 const BodyPost = () => {
   return (
     <View style={styles.container}>

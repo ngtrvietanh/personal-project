@@ -33,41 +33,44 @@ const BaseButton: FunctionComponent<Props> = (props: Props) => {
     customStyleBtn,
     customStyleTitle,
     disabled,
-    customStyle,
     iconNameLeft,
     iconNameRight,
     iconColorLeft,
     iconColoright,
   } = props;
+  const color = disabled ? '#D2D6DB' : 'black';
   const backgroundColor = disabled ? '#F3F4F6' : '#FFFFFF';
   const marginLeft = iconNameLeft ? WIDTH(8) : 0;
   const marginRight = iconNameRight ? WIDTH(8) : 0;
-  const styleContainer = [
-    styles.container,
-    {backgroundColor, marginLeft, marginRight},
-    customStyleBtn,
-  ];
+  const styleContainer = [styles.container, {backgroundColor}, customStyleBtn];
   if (isInvisible) {
     return null;
   } else {
     return (
-      <View style={customStyle}>
-        <TouchableOpacity
-          disabled={disabled}
-          activeOpacity={0.6}
-          onPress={onPress && onPress}
-          style={styleContainer}>
-          {!!iconNameLeft && (
-            <ItemIconSVG title={iconNameLeft} color={iconColorLeft} />
-          )}
-          <Text style={[styles.title, customStyleTitle]}>
-            {title || 'Nút nhấn'}
-          </Text>
-          {!!iconNameRight && (
-            <ItemIconSVG title={iconNameRight} color={iconColoright} />
-          )}
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        disabled={disabled}
+        activeOpacity={0.6}
+        onPress={onPress && onPress}
+        style={styleContainer}>
+        {!!iconNameLeft && (
+          <ItemIconSVG title={iconNameLeft} color={iconColorLeft} />
+        )}
+        <Text
+          style={[
+            styles.title,
+            {
+              marginLeft,
+              marginRight,
+              color,
+            },
+            customStyleTitle,
+          ]}>
+          {title || 'Nút nhấn'}
+        </Text>
+        {!!iconNameRight && (
+          <ItemIconSVG title={iconNameRight} color={iconColoright} />
+        )}
+      </TouchableOpacity>
     );
   }
 };

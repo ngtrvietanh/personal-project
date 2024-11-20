@@ -1,9 +1,9 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Avatar from '../Avatar';
-import R from '../../../assets/R';
-import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../function';
-import ItemIconSVG from '../IconSVG';
+import Avatar from '../../Avatar';
+import R from '../../../../assets/R';
+import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
+import ItemIconSVG from '../../IconSVG';
 const HeaderPost = () => {
   return (
     <View style={styles.container}>

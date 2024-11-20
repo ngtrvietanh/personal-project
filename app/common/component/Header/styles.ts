@@ -8,13 +8,11 @@ import {
   WIDTH,
 } from '../../function';
 const styles = StyleSheet.create({
-  btnBack: {position: 'absolute', left: WIDTH(0)},
-  btnRight: {position: 'absolute', right: WIDTH(0)},
   viewContent: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   container: {
     alignItems: 'flex-end',
@@ -25,6 +23,8 @@ const styles = StyleSheet.create({
     width: getWidth(),
     height: HEIGHT(126),
     backgroundColor: 'white',
+    borderBottomWidth: 1,
+    borderColor: '#F3F4F6',
   },
   title: {
     color: 'black',
