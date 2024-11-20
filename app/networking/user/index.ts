@@ -1,12 +1,10 @@
 import {NetWorkService} from '../service';
+import url from '../url';
 
-export const notiToTele = (
-  tokenTele: string,
-  body: {chat_id: string; text: string},
-) =>
-  NetWorkService.Post({
-    url: `https://api.telegram.org/bot${tokenTele}/sendMessage`,
-    body,
+export const onGetDanhSach = (params: any) =>
+  NetWorkService.Get({
+    url: url.DANH_SACH_BAI_DANG,
+    params,
     baseURL: '',
   }).then((res: any) => {
     return res;

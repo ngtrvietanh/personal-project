@@ -128,8 +128,6 @@ function Request<Params, Body, T = Record<string, unknown>>(
 
         const result = handleErrorAxios(error);
 
-        console.log('===>error', error);
-
         if (error?.response?.status === RESULT_CODE_PUSH_OUT) {
           rs(null);
         } else {

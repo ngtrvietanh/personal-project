@@ -5,29 +5,32 @@ import BodyPost from '../../common/component/Item/ItemPost/BodyPost';
 import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../common/function';
 import ItemIconQuantity from '../../common/component/Item/ItemPost/ItemIconQuantity';
 import CommentPost from '../../common/component/CommentPost';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const DetailPost = () => {
   return (
     <View style={styles.container}>
       <HeaderBaiDang />
-      <View style={styles.content}>
-        <BodyPost />
-        <Text style={styles.viewQuantity}>55K lượt xem</Text>
-        <Text style={styles.viewQuantity}>
-          11k thích • 6 bình luận • 2 chia sẻ
-        </Text>
-        <View style={styles.viewFooter}>
-          <ItemIconQuantity iconName="Heart" quantity="55K" />
-          <ItemIconQuantity
-            style={styles.iconRight}
-            iconName="Message"
-            quantity="55K"
-          />
+      <KeyboardAwareScrollView>
+        <View style={styles.content}>
+          <BodyPost />
+          <Text style={styles.viewQuantity}>55K lượt xem</Text>
+          <Text style={styles.viewQuantity}>
+            11k thích • 6 bình luận • 2 chia sẻ
+          </Text>
+          <View style={styles.viewFooter}>
+            <ItemIconQuantity iconName="Heart" quantity="55K" />
+            <ItemIconQuantity
+              style={styles.iconRight}
+              iconName="Message"
+              quantity="55K"
+            />
+          </View>
         </View>
-      </View>
-      <View style={styles.comment}>
-        <CommentPost />
-      </View>
+        <View style={styles.comment}>
+          <CommentPost />
+        </View>
+      </KeyboardAwareScrollView>
     </View>
   );
 };

@@ -1,3 +1,3 @@
 export default {
-  DIEM_DANH_SU_KIEN: '/slink/sv-su-kien/qr',
+  DANH_SACH_BAI_DANG: 'https://rickandmortyapi.com/api/character',
 };

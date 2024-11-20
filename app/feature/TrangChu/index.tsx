@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import HeaderReal from '../../common/component/Header';
 import TabbarGroup from '../../common/component/Tabview';
 import ThaoLuan from './ThaoLuan';
@@ -15,13 +15,25 @@ import AlbumTab from './AlbumTab';
 import {getWidth, HEIGHT} from '../../common/function';
 import UpdateThought from './UpdateThought';
 import InfoGroup from './InfoGroup';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {onGetDanhSach} from '../../networking/user';
 interface RouteProps {
   key: number;
   title: string;
 }
 const TrangChu = () => {
+  useEffect(() => {
+    initData();
+  }, []);
+
+  const initData = async () => {
+    try {
+      const params = {page: 1, limit: 10};
+      const response = await onGetDanhSach(params);
+      console.log('====>', response?.data?.results);
+    } catch (error) {}
+  };
   const [index, setIndex] = useState(0);
-  console.log('===>', index);
   const [routes] = useState<RouteProps[]>([
     {key: 0, title: 'Thảo luận'},
     {key: 1, title: 'Ảnh'},
@@ -54,7 +66,7 @@ const TrangChu = () => {
   return (
     <View style={styles.container}>
       <HeaderReal />
-      <View style={styles.content}>
+      <KeyboardAwareScrollView style={styles.content}>
         <TouchableOpacity style={styles.coverPhoto} />
         <InfoGroup />
         <UpdateThought />
@@ -63,7 +75,7 @@ const TrangChu = () => {
           onIndexChange={onIndexChange}
           navigationState={{index, routes}}
         />
-      </View>
+      </KeyboardAwareScrollView>
     </View>
   );
 };

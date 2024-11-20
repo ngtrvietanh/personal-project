@@ -6,11 +6,14 @@ const DATA = [1, 2, 3];
 const ThaoLuan = () => {
   return (
     <View style={{flex: 1}}>
-      <FlatList
+      {DATA?.map(item => {
+        return <ItemPost />;
+      })}
+      {/* <FlatList
         data={DATA}
         extraData={DATA}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item: any) => item?._id}
+        keyExtractor={(item, index) => `${index}`}
         renderItem={({item, index}) => <ItemPost />}
         //   onRefresh={getData}
         //   refreshing={loading}
@@ -20,7 +23,7 @@ const ThaoLuan = () => {
         //   onMomentumScrollBegin={() => {
         //     beginScroll.current = true;
         //   }}
-      />
+      /> */}
     </View>
   );
 };
