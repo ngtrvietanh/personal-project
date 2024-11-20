@@ -4,20 +4,22 @@ import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 import ItemIamge from '../../../common/component/Item/ItemImage';
 import {HEIGHT, WIDTH} from '../../../common/function';
-const DATA = [
-  1, 2, 3, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 2, 3,
-];
-const ImageTab = () => {
+import {ItemPostProps} from '../type';
+interface Props {
+  dsBaiDang: ItemPostProps[];
+}
+const ImageTab = (props: Props) => {
+  const {dsBaiDang} = props;
   return (
     <View style={styles.container}>
       <FlatList
-        data={DATA}
-        extraData={DATA}
+        data={dsBaiDang}
+        extraData={dsBaiDang}
         numColumns={3}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => `${index}`}
+        keyExtractor={item => item?.id?.toString()}
         ItemSeparatorComponent={() => <View style={{height: WIDTH(7)}} />}
-        renderItem={({item, index}) => <ItemIamge index={index} />}
+        renderItem={({item, index}) => <ItemIamge index={index} item={item} />}
       />
     </View>
   );

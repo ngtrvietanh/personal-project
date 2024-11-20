@@ -3,17 +3,19 @@ import React from 'react';
 import {Image} from 'react-native';
 import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
 import ViewBox from '../ViewBox';
+import {ItemPostProps} from '../../../../feature/TrangChu/type';
 interface Props {
   index: number;
+  data: ItemPostProps;
 }
 const ItemAlbum = (props: Props) => {
-  const {index} = props;
+  const {index, data} = props;
   return (
     <ViewBox style={styles.container} index={index}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://i.pinimg.com/736x/fa/3a/bc/fa3abc7daa02799fb3cd7dbee73b6a2a.jpg',
+          uri: data?.image,
         }}
         resizeMode={'cover'}
       />

@@ -13,6 +13,23 @@ const ItemIconSVG = (props: Props) => {
   const {title, color, width, height} = props;
 
   switch (title) {
+    case 'Camera update':
+      return (
+        <Svg
+          width={width || WIDTH(20)}
+          height={height || WIDTH(20)}
+          viewBox="0 0 20 20"
+          fill="none">
+          <Path
+            fill="#0D121C"
+            d="M10 13.333a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+          />
+          <Path
+            fill="#0D121C"
+            d="M16.667 4.167h-2.642l-1.033-1.125a1.659 1.659 0 0 0-1.225-.542H8.233c-.466 0-.916.2-1.233.542L5.975 4.167H3.333c-.916 0-1.666.75-1.666 1.666v10c0 .917.75 1.667 1.666 1.667h13.334c.916 0 1.666-.75 1.666-1.667v-10c0-.916-.75-1.666-1.666-1.666ZM10 15a4.168 4.168 0 0 1-4.167-4.167c0-2.3 1.867-4.166 4.167-4.166s4.167 1.866 4.167 4.166C14.167 13.133 12.3 15 10 15Z"
+          />
+        </Svg>
+      );
     case 'Public':
       return (
         <Svg
