@@ -1,3 +1,6 @@
+import {Dimensions} from 'react-native';
+import {initialWindowMetrics} from 'react-native-safe-area-context';
+
 export const handleErrorApi = (response: any) => {
   const result = {
     status: false,
@@ -27,3 +30,21 @@ export const handleErrorApi = (response: any) => {
 
   return result;
 };
+
+const {width, height} = Dimensions.get('window');
+
+const deviceHeight = height - (initialWindowMetrics?.insets.top ?? 0);
+
+export const responsiveHeight = (h: number): number => height * (h / 100);
+
+export const WIDTH = (w: number): number => width * (w / 375);
+
+export const HEIGHT = (h: number): number => deviceHeight * (h / 812);
+
+export const getWidth = (): number => width;
+
+export const getHeight = (): number => height;
+
+export const getLineHeight = (f: number): number => f;
+
+export const getFontSize = (fontSize: number) => fontSize;

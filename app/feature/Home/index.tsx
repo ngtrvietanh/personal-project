@@ -4,6 +4,7 @@ import React from 'react';
 import {goBack} from '../../navigation/navigation-service';
 import {RootState} from '../../redux/store';
 import {useSelector} from 'react-redux';
+import HeaderReal from '../../common/component/Header';
 
 const Home = () => {
   const filterId = useSelector((state: RootState) => state.filter);

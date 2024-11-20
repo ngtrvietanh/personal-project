@@ -5,6 +5,7 @@ import {navigateScreen} from '../../navigation/navigation-service';
 import {APP_SCREEN} from '../../navigation/screen-types';
 import {useDispatch} from 'react-redux';
 import {searchFilterChange} from '../../redux/slice/filterSlice';
+import HeaderReal from '../../common/component/Header';
 
 const TrangChu = () => {
   const dispatch = useDispatch();
@@ -12,17 +13,18 @@ const TrangChu = () => {
     navigateScreen(APP_SCREEN.HOME);
   }
   function handleSubmit() {
-    dispatch(searchFilterChange({id: 'hehe', name: 'hihi'}));
+    dispatch(searchFilterChange({id: 'hehe', name: 'hihi', token: ''}));
   }
   return (
     <View
       style={{
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
       }}>
-      <Button title="Deploy dữ liệu" onPress={handleSubmit} />
-      <Button title="Go to Home" onPress={handleClick} />
+      <HeaderReal />
+      <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
+        <Button title="Deploy dữ liệu" onPress={handleSubmit} />
+        <Button title="Go to Home" onPress={handleClick} />
+      </View>
     </View>
   );
 };
