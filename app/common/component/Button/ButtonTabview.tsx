@@ -6,13 +6,15 @@ interface Props {
   title: string;
   isActive?: boolean;
   styleBtn?: ViewStyle;
+  onPress: () => void;
 }
 const ButtonTabview = (props: Props) => {
-  const {title, isActive, styleBtn} = props;
+  const {title, isActive, styleBtn, onPress} = props;
   const backgrColor = isActive ? '#3864FF' : '#F9FAFB';
   const textColor = isActive ? '#FFFFFF' : '#4D5761';
   return (
     <BaseButton
+      onPress={onPress}
       title={title}
       customStyleBtn={[
         styles.customeBtn,

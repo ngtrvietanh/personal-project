@@ -1,49 +1,63 @@
-/* eslint-disable react-native/no-inline-styles */
-import {Button, Image, View} from 'react-native';
-import React from 'react';
-import {navigateScreen} from '../../navigation/navigation-service';
-import {APP_SCREEN} from '../../navigation/screen-types';
-import {useDispatch} from 'react-redux';
-import {searchFilterChange} from '../../redux/slice/filterSlice';
+import {View, StyleSheet, Text} from 'react-native';
+import React, {useState} from 'react';
 import HeaderReal from '../../common/component/Header';
-import ButtonTabview from '../../common/component/Button/ButtonTabview';
-import ItemIconSVG from '../../common/component/IconSVG';
-import TabbarPost from '../../common/component/TabbarPost';
-import {WIDTH} from '../../common/function';
-import R from '../../assets/R';
-import Avatar from '../../common/component/Avatar';
-import CommentPost from '../../common/component/CommentPost';
-import ItemPost from '../../common/component/ItemPost';
+import TabbarGroup from '../../common/component/Tabview';
+import ThaoLuan from './ThaoLuan';
+interface RouteProps {
+  key: number;
+  title: string;
+}
 const TrangChu = () => {
-  const dispatch = useDispatch();
-  function handleClick() {
-    navigateScreen(APP_SCREEN.HOME);
-  }
-  function handleSubmit() {
-    dispatch(searchFilterChange({id: 'hehe', name: 'hihi', token: ''}));
-  }
+  const [index, setIndex] = useState(0);
+
+  const [routes] = useState<RouteProps[]>([
+    {key: 0, title: 'Thảo luận'},
+    {key: 1, title: 'Ảnh'},
+    {key: 2, title: 'Video'},
+    {key: 3, title: 'Album'},
+    {key: 4, title: 'File'},
+  ]);
+
+  const onIndexChange = (curindex: number) => {
+    setIndex(curindex);
+  };
+
+  const renderScene = ({route}: {route: RouteProps}) => {
+    console.log('===>', route);
+    switch (route.title) {
+      case 'Thảo luận':
+        return <ThaoLuan key={route?.key} />;
+      case 'Ảnh':
+        return <Text>1</Text>;
+      case 'Video':
+        return <Text>1</Text>;
+      case 'Album':
+        return <Text>1</Text>;
+      case 'File':
+        return <Text>1</Text>;
+
+      default:
+        return null;
+    }
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-      }}>
+    <View style={styles.container}>
       <HeaderReal />
-      <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
-        <ItemPost />
-        {/* <Button title="Deploy dữ liệu" onPress={handleSubmit} />
-        <Button title="Go to Home" onPress={handleClick} />
-        <ButtonTabview isActive title="Thảo luận" />
-        <TabbarPost /> */}
-        {/* <Image
-          style={{height: WIDTH(100), width: WIDTH(100)}}
-          source={R.images.avatar}
-          resizeMode="cover"
-        /> */}
-        {/* <Avatar source={R.images.avatar} />
-        <CommentPost /> */}
+      <View style={styles.content}>
+        <TabbarGroup
+          renderScene={renderScene}
+          onIndexChange={onIndexChange}
+          navigationState={{index, routes}}
+        />
       </View>
     </View>
   );
 };
 
 export default TrangChu;
+
+const styles = StyleSheet.create({
+  container: {flex: 1},
+  content: {flex: 1},
+});
