@@ -1,20 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import ItemIconSVG from '../../IconSVG';
-import {getFontSize, getLineHeight, HEIGHT, WIDTH} from '../../../function';
-interface ItemIconQuantityProps {
-  iconName: string;
-  quantity: string;
-}
-const ItemIconQuantity = (props: ItemIconQuantityProps) => {
-  const {iconName, quantity} = props;
-  return (
-    <View style={styles.containerItem}>
-      <ItemIconSVG title={iconName} />
-      <Text style={styles.textQuantity}>{quantity}</Text>
-    </View>
-  );
-};
+import {HEIGHT} from '../../../function';
+import ItemIconQuantity from './ItemIconQuantity';
 
 const FooterPost = () => {
   return (
@@ -32,17 +19,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: HEIGHT(8),
-  },
-  containerItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: HEIGHT(8),
-    paddingHorizontal: WIDTH(12),
-  },
-  textQuantity: {
-    marginLeft: WIDTH(4),
-    fontWeight: '400',
-    fontSize: getFontSize(14),
-    lineHeight: getLineHeight(20),
   },
 });

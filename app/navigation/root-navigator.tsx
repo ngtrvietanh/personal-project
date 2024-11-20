@@ -4,6 +4,7 @@ import {APP_SCREEN} from './screen-types';
 import TrangChu from '../feature/TrangChu';
 import Home from '../feature/Home';
 import AddPost from '../feature/AddPost';
+import DetailPost from '../feature/DetailPost';
 
 const RootStack = createNativeStackNavigator();
 
@@ -24,6 +25,10 @@ export const RootNavigation = () => {
         <RootStack.Screen name={APP_SCREEN.TRANG_CHU} component={TrangChu} />
         <RootStack.Screen name={APP_SCREEN.HOME} component={Home} />
         <RootStack.Screen name={APP_SCREEN.ADD_POST} component={AddPost} />
+        <RootStack.Screen
+          name={APP_SCREEN.DETAIL_POST}
+          component={DetailPost}
+        />
       </RootStack.Group>
     </RootStack.Navigator>
   );

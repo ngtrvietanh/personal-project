@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  btnBack: {marginRight: WIDTH(8)},
   container: {
     alignItems: 'flex-end',
     flexDirection: 'row',
