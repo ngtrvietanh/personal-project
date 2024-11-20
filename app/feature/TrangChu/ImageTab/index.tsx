@@ -49,5 +49,6 @@ const styles = StyleSheet.create({
     marginTop: HEIGHT(8),
     paddingVertical: HEIGHT(16),
     paddingHorizontal: WIDTH(16),
+    marginBottom: HEIGHT(30),
   },
 });
