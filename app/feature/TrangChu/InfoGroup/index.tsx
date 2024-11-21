@@ -8,7 +8,7 @@ import {
   HEIGHT,
   WIDTH,
 } from '../../../common/function';
-
+import R from '../../../assets/R';
 const InfoGroup = () => {
   return (
     <View style={styles.container}>
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   info: {flexDirection: 'row', alignItems: 'center'},
   header: {paddingHorizontal: WIDTH(16), paddingVertical: HEIGHT(12)},
   nameGr: {
+    fontFamily: R.fonts.NotoSansSemiBold,
     fontWeight: '600',
     fontSize: getFontSize(20),
     lineHeight: getLineHeight(30),
