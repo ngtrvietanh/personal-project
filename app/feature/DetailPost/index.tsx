@@ -27,7 +27,7 @@ const DetailPost = (props: Props) => {
             <ItemIconQuantity
               style={styles.iconRight}
               iconName="Message"
-              quantity="55K"
+              quantity="28K"
             />
           </View>
         </View>

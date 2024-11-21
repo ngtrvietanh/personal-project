@@ -10,15 +10,16 @@ interface Props {
 }
 const ButtonTabview = (props: Props) => {
   const {title, isActive, styleBtn, onPress} = props;
-  const backgrColor = isActive ? '#3864FF' : '#F9FAFB';
+  const backgroundColor = isActive ? '#3864FF' : '#F9FAFB';
   const textColor = isActive ? '#FFFFFF' : '#4D5761';
+  const borderWidth = isActive ? 0 : 1;
   return (
     <BaseButton
       onPress={onPress}
       title={title}
       customStyleBtn={[
         styles.customeBtn,
-        {backgroundColor: backgrColor},
+        {backgroundColor, borderWidth},
         styleBtn,
       ]}
       customStyleTitle={{color: textColor}}
@@ -33,5 +34,6 @@ const styles = StyleSheet.create({
     paddingVertical: HEIGHT(8),
     paddingHorizontal: WIDTH(12),
     borderRadius: WIDTH(50),
+    borderColor: '#F3F4F6',
   },
 });

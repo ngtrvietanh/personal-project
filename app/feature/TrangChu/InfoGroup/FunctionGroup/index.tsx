@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   btnLeft: {
     backgroundColor: '#F9FAFB',
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: '#F3F4F6',
     height: HEIGHT(36),
     width: WIDTH(195),
